@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class lib {
   public static int Msb(int a) {
+    a=Math.abs(a);
     int n = Integer.toBinaryString(a).length() - 1;
     return n;
   }
@@ -57,4 +58,31 @@ public class lib {
     }
     return res;
   }
+
+  public static String GetQueryString(String table, String fields, String where) {
+    StringBuilder sb=new StringBuilder("select ");
+    sb
+    //.append(GetFields(table, fields))
+    .append(" from " + table)
+    .append(table);
+    String sql="";
+    return sql;
+  }
+
+  /*private static String GetFields(String table, String fields){
+  //String [] arrf=fields.split(fields);
+  StringBuilder fb=new StringBuilder(f);
+  if(fields.length()>0){
+    for(int i=0;i<fields.length;i++){
+    fb.append(table +"."+fields[i]+", ");
+    }
+    fb.delete(fb.length()-2, fb.length()+1);
+    }
+    else{
+      //f="*";
+    }
+
+}
+return f;
+  }*/
 }

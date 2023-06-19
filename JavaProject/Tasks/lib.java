@@ -6,8 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class lib {
   public static int Msb(int a) {
@@ -230,7 +232,7 @@ public class lib {
 
   public static void ReplaceSubstringStringMsDuration(String txt, String target, String replacement) {
     long lentxt = txt.length();
-    String stxt=txt;
+    String stxt = txt;
     System.out.println("*****СТРОКА (String)*****");
     System.out.println("ТЕКСТ ДО ИЗМЕНЕНИЯ: " + stxt.substring(0, 100));
     long msduration = System.nanoTime();
@@ -247,14 +249,54 @@ public class lib {
     StringBuilder sbtxt = new StringBuilder(txt);
     System.out.println("*****ПОСТРОИТЕЛЬ СТРОКИ (StringBuilder)*****");
     System.out.println("ТЕКСТ ДО ИЗМЕНЕНИЯ: " + sbtxt.toString().substring(0, 100));
-    long msduration =System.nanoTime();
-    while (sbtxt.lastIndexOf(target)!=-1){
-      sbtxt.replace(sbtxt.lastIndexOf(target), sbtxt.lastIndexOf(target)+target.length(), replacement);
+    long msduration = System.nanoTime();
+    while (sbtxt.lastIndexOf(target) != -1) {
+      sbtxt.replace(sbtxt.lastIndexOf(target), sbtxt.lastIndexOf(target) + target.length(), replacement);
     }
     msduration = System.nanoTime() - msduration;
     System.out.println("ТЕКСТ ПОСЛЕ ИЗМЕНЕНИЯ: " + sbtxt.toString().substring(0, 100));
     System.out.println("(* для контроля выведены первые 100 символов)");
     System.out.println("ДЛИНА ТЕКСТА: " + lentxt);
     System.out.println("ВРЕМЯ ИСПОЛНЕНИЯ: " + msduration + " ns\n");
+  }
+
+  public static ArrayList<Integer> GetRndArrayList(int size, int minvalue, int maxvalue) {
+    ArrayList<Integer> list = new ArrayList<>(0);
+    Random rnd = new Random();
+    for (int i = 0; i < size; i++) {
+      list.add(rnd.nextInt(minvalue, maxvalue + 1));
+    }
+    return list;
+  }
+
+  public static ArrayList<Integer> GetArrayListItemsWithoutRemainder(ArrayList<Integer> arraylist, int div) {
+    for (int i = arraylist.size()-1; i >=0; i--) {
+      if (arraylist.get(i) % div == 0) arraylist.remove(i);
+      }
+    arraylist.trimToSize();
+    return arraylist;
+  }
+
+  public static int ArrayListMaxValue(ArrayList<Integer> arraylist) {
+    Collections.sort(arraylist);
+    return arraylist.get(arraylist.size() - 1);
+  }
+
+  public static int ArrayListMinValue(ArrayList<Integer> arraylist) {
+    Collections.sort(arraylist);
+    return arraylist.get(0);
+  }
+
+  public static int ArrayListAvgValue(ArrayList<Integer> arraylist) {
+    int listavg = 0;
+    if (arraylist.size() != 0) {
+      for (int i = 0; i < arraylist.size(); i++) {
+        listavg = +arraylist.get(i);
+      }
+      return listavg / arraylist.size();
+    } else {
+      System.out.println("Ошибка деления на ноль");
+      return 0;
+    }
   }
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class runner {
   public static void main(String[] args) throws IOException {
-    int[] ex = { 1, 2, 3, 4};//, 5 };
+    int[] ex = { 1, 2, 3, 4, 5, 6 };
     System.out.println("Для запуска доступны задачи: " + Arrays.toString(ex));
     Scanner numselect = new Scanner(System.in);
     System.out.print("Введите номер задачи: ");
@@ -30,6 +30,12 @@ public class runner {
         break;
       case 4:
         task_04.run();
+        break;
+      case 5:
+        task_05.run();
+        break;
+      case 6:
+        task_06.run();
         break;
       default:
         break;

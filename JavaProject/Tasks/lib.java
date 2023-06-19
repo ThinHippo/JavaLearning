@@ -287,11 +287,11 @@ public class lib {
     return arraylist.get(0);
   }
 
-  public static int ArrayListAvgValue(ArrayList<Integer> arraylist) {
-    int listavg = 0;
+  public static double ArrayListAvgValue(ArrayList<Integer> arraylist) {
+    double listavg = 0.0;
     if (arraylist.size() != 0) {
       for (int i = 0; i < arraylist.size(); i++) {
-        listavg = +arraylist.get(i);
+        listavg +=arraylist.get(i);
       }
       return listavg / arraylist.size();
     } else {
